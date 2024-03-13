@@ -1,0 +1,6 @@
+aws_region   = "us-east-1"
+db_name      = ""
+db_user      = ""
+db_password  = ""
+vpc_id       = "vpc-"
+cidr_blocks  = "0.0.0.0/0" 
