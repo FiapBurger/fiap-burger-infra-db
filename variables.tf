@@ -1,11 +1,6 @@
 variable "aws_region" {
-  description = "AWS region"
+  description = "AWS region for the RDS instance"
   default     = "us-east-1"
-}
-
-variable "db_name" {
-  description = "The name of the database to create"
-  type        = string
 }
 
 variable "db_user" {
@@ -14,16 +9,16 @@ variable "db_user" {
 }
 
 variable "db_password" {
-  description = "Password for the database"
+  description = "Password for the database user"
   type        = string
 }
 
 variable "vpc_id" {
-  description = "VPC ID where the database should be created"
+  description = "The VPC ID where the RDS instance should be created"
   type        = string
 }
 
-variable "cidr_blocks" {
-  description = "CIDR blocks that are allowed to access the database"
-  type        = string
+variable "allowed_cidr_blocks" {
+  description = "List of CIDR blocks allowed to access the RDS instance"
+  type        = list(string)
 }
