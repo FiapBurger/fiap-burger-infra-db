@@ -1,0 +1,24 @@
+name: Open Pull Request from Feature to Main
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_title: "Merge Feature para Main"
+          pr_body: "Pull request automático para main."
+          pr_label: "automated-pr"
+          pr_draft: false
+          base: "main"
+          head: "${{ github.ref }}"
