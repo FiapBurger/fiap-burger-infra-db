@@ -3,17 +3,17 @@ provider "aws" {
 }
 
 resource "aws_db_instance" "postgres_db" {
-  allocated_storage    = 8
-  engine               = "postgres"
-  engine_version       = "12" 
-  instance_class       = "db.t3.micro" 
-  identifier           = "db-fiap-burger-svc"
-  name                 = var.db_name
-  username             = "cG9zdGdyZXM="
-  password             = "MTIzNDU2"
-  
-  skip_final_snapshot  = true
-  
+  allocated_storage = 8
+  engine            = "postgres"
+  engine_version    = "12"
+  instance_class    = "db.t3.micro"
+  identifier        = "db-fiap-burger-svc"
+  name              = var.db_name
+  username          = "cG9zdGdyZXM="
+  password          = "MTIzNDU2"
+
+  skip_final_snapshot = true
+
 
   vpc_security_group_ids = [aws_security_group.db_sg.id]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
