@@ -20,6 +20,6 @@ jobs:
           pr_title: "Merge Feature para Main"
           pr_body: "Pull request automático para main."
           pr_label: "automated-pr"
-          pr_draft: false
+          pr_draft: true
           base: "main"
           head: "${{ github.ref }}"
