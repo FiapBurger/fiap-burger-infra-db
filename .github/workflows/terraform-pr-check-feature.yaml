@@ -1,4 +1,4 @@
-name: Terraform PR Check
+name: Feature
 
 on:
   pull_request:
