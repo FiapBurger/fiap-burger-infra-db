@@ -8,6 +8,7 @@ on:
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
+    needs: terraform-plan
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

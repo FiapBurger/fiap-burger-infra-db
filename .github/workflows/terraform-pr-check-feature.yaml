@@ -37,7 +37,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -parallelism=30
 
   database-migration:
     name: Database Migration
