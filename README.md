@@ -1,65 +1,72 @@
-# Infraestrutura de Banco de Dados com Terraform
+# FiapBurger Infraestrutura de Banco de Dados
 
-Este projeto provisiona uma infraestrutura de banco de dados AWS RDS usando Terraform. Ele é configurado para criar uma instância de banco de dados RDS MySQL em um ambiente seguro e privado.
+Este projeto, FiapBurger, provisiona a infraestrutura necessária para um banco de dados PostgreSQL no AWS RDS usando Terraform. O banco de dados é projetado para suportar um sistema de gerenciamento de pedidos para uma lanchonete, permitindo operações como gerenciamento de pedidos, clientes, produtos e acompanhamento do status dos pedidos.
 
-## Pré-requisitos
+## Estrutura do Projeto
 
-- Terraform v0.14 ou superior
-- Conta AWS
-- AWS CLI configurado localmente
+O repositório está organizado da seguinte forma:
 
-## Configuração Inicial
+/
+├── .github/workflows/ # Contém os arquivos de configuração para CI/CD
+├── database/
+│ ├── migrations/ # Scripts SQL para migrações do banco de dados
+│── main.tf
+├── variables.tf
+│── outputs.tf
+│── versions.tf
+└── README.md
 
-1. Clone o repositório para a sua máquina local:
+## Funcionalidades de Negócio
 
-    ```
-    git clone https://github.com/FiapBurger/fiap-burger-infra-db.git
-    ```
+O banco de dados do FiapBurger suporta as seguintes funcionalidades de negócio:
 
-2. Navegue até o diretório do projeto:
-
-    ```
-    cd environments
-    ```
-
-3. Inicialize o Terraform:
-
-    ```
-    terraform init
-    ```
-
-Isso irá baixar todos os providers necessários e preparar o projeto do fiap burger para o primeiro uso.
-
-
-### GitHub Actions Workflows
-
-- `terraform-pr-check-main.yaml`: Define o pipeline de integração e entrega contínua, automatizando a formatação do Terraform, o planejamento, a aplicação e a execução de migrações do banco de dados.
-
-### Diretório de Database
-
-- `migrations/`: Contém os scripts SQL para a criação e atualização do esquema do banco de dados.
-
-### Diretório de Terraform
-
--  Contém arquivos Terraform para a criação e gestão de uma instância do PostgreSQL no AWS RDS.
+- **Gestão de Produtos**: Inclui o cadastro de produtos, categorias e a gestão de inventário.
+- **Gestão de Pedidos**: Permite criar, atualizar e acompanhar pedidos, incluindo o status do pedido (aberto, confirmado, em preparo, pronto para retirada, etc.).
+- **Gestão de Clientes**: Gerenciamento de informações dos clientes, como nome, email e CPF.
+- **Registro de Histórico**: Mantém um registro de todas as alterações no status do pedido para acompanhamento.
 
 ## Pré-requisitos
 
-- Terraform instalado na sua máquina local.
-- Conta AWS com as permissões necessárias para criar os recursos especificados.
-- AWS CLI configurado com credenciais apropriadas.
-- (Opcional) Ferramenta de migração de banco de dados, se você não estiver executando migrações manualmente.
+- Terraform (versão especificada no `versions.tf`)
+- Acesso à AWS com permissões para criar recursos RDS, VPC, etc.
+- Cliente SQL para execução de migrações de banco de dados (opcional, se migrações automáticas estiverem configuradas no CI/CD)
+
+## Configuração e Uso
+
+1. **Configuração Inicial do Terraform**:
+    - Execute `terraform init` para inicializar o projeto Terraform.
+    - Use `terraform plan` para revisar as mudanças planejadas.
+    - Aplique a infraestrutura com `terraform apply`.
+
+2. **Executando Migrações de Banco de Dados**:
+    - Após a infraestrutura estar pronta, migre o esquema do banco de dados utilizando os scripts em `database/migrations`.
+    - Isso pode ser feito manualmente ou através do pipeline de CI/CD configurado.
+
+3. **Verificação**:
+    - Após a aplicação das migrações, verifique no banco de dados se todas as tabelas e sequências foram criadas corretamente.
+
+## CI/CD
+
+O projeto utiliza GitHub Actions para automatizar o processo de CI/CD, que inclui:
+
+- Verificação de formatação do Terraform.
+- Execução do `terraform plan` em Pull Requests para revisão.
+- Aplicação automática do `terraform apply` para mudanças na branch `main`.
+- Execução das migrações de banco de dados como parte do processo de deployment.
+
+Veja `.github/workflows/terraform-pr-check-main.yaml` para detalhes da configuração do pipeline.
+
+## Contribuindo
+
+Para contribuir com o projeto FiapBurger:
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`).
+3. Faça commit de suas mudanças (`git commit -m 'Add some AmazingFeature'`).
+4. Faça push para a branch (`git push origin feature/AmazingFeature`).
+5. Abra um Pull Request.
 
 
-### Executando Migrações de Banco de Dados
+## Link do Repositório
 
-1. Após a infraestrutura do banco de dados estar pronta, execute as migrações necessárias:
-
-    ```bash
-    psql -h [endpoint-do-rds] -U [usuario] -d [nome-do-banco] -a -f database/migrations/01_create_tables.sql
-    ```
-
-## Contribuição
-
-Sinta-se à vontade para contribuir com o projeto. Faça um fork do repositório, faça suas alterações e envie um Pull Request.
-
+[FiapBurger Infra DB](https://github.com/FiapBurger/fiap-burger-infra-db)
