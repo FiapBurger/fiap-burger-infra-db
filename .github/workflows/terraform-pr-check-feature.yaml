@@ -96,6 +96,6 @@ jobs:
 
       - name: Run Database Migrations
         run: |
-          psql -f database/migrations/01_create_tables.sql postgresql://cG9zdGdyZXM=:MTIzNDU2@localhost:5432/postgres
+          psql -h db-fiap-burger-svc -U cG9zdGdyZXM= -d postgres -a -f database/migrations/01_create_tables.sql
         env:
-          POSTGRES_PASSWORD: 'MTIzNDU2'
+          PGPASSWORD: 'MTIzNDU2'
