@@ -1,10 +1,15 @@
 provider "aws" {
   region = var.aws_region
+
+  assume_role {
+    role_arn     = "arn:aws:iam::730335333567:role/LabRole"
+    session_name = "TerraformSession"
+  }
 }
 
 # AWS RDS instance
 resource "aws_db_instance" "postgres_db" {
-  allocated_storage   = 20 # Ajuste conforme a necessidade
+  allocated_storage   = 20 
   storage_type        = "gp2"
   engine              = "postgres"
   engine_version      = "12"
@@ -13,8 +18,7 @@ resource "aws_db_instance" "postgres_db" {
   username            = "cG9zdGdyZXM="
   password            = "MTIzNDU2"
   skip_final_snapshot = true
-  multi_az            = false # Configure conforme necessário
-  role_arn            = "arn:aws:iam::730335333567:role/LabRole"
+  multi_az            = false 
 
   vpc_security_group_ids = [aws_security_group.db_sg.id]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
