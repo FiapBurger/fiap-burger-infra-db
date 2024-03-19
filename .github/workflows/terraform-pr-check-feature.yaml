@@ -64,7 +64,7 @@ jobs:
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           pr_title: "Merge Feature para Main"
           pr_body: "Pull request automático para main."
           pr_label: "automated-pr"
