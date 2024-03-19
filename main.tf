@@ -1,10 +1,6 @@
 provider "aws" {
   region = var.aws_region
 
-  assume_role {
-    role_arn     = "arn:aws:iam::730335333567:role/LabRole"
-    session_name = "TerraformSession"
-  }
 }
 
 # AWS RDS instance
@@ -22,6 +18,12 @@ resource "aws_db_instance" "postgres_db" {
 
   vpc_security_group_ids = [aws_security_group.db_sg.id]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
+
+  assume_role {
+    role_arn     = "arn:aws:iam::730335333567:role/LabRole"
+    session_name = "TerraformSession"
+  }
+
 
   tags = {
     Name        = "FiapBurgerDB"
