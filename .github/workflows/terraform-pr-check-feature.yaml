@@ -60,7 +60,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
@@ -80,6 +81,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Run Database Migrations
         run: |
