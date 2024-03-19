@@ -98,4 +98,6 @@ jobs:
         run: |
           psql -h db-fiap-burger-svc -U cG9zdGdyZXM= -d postgres -a -f database/migrations/01_create_tables.sql
         env:
+          - POSTGRES_NAME: 'db-fiap-burger-svc'
+          - POSTGRES_USER: 'cG9zdGdyZXM='
           - POSTGRES_PASSWORD: 'MTIzNDU2'
