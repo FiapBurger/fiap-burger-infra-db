@@ -38,6 +38,7 @@ resource "aws_security_group" "db_sg" {
   description = "Security group for FiapBurger PostgreSQL DB"
   vpc_id      = "vpc-0c9c3eae30dce3c6e"
 
+
   ingress {
     from_port   = 5432
     to_port     = 5432
@@ -56,6 +57,7 @@ resource "aws_security_group" "db_sg" {
 # Subnet group for RDS
 resource "aws_db_subnet_group" "db_subnet_group" {
   name       = "fiap-burger-db-subnet-group"
+  role_arn = "arn:aws:iam::730335333567:role/LabRole"
   subnet_ids = [
           "subnet-081d1613d89ee8ba6",
           "subnet-0b97e6916779e8ddb"
