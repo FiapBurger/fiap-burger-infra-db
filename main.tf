@@ -14,7 +14,7 @@ resource "aws_db_instance" "postgres_db" {
   password            = "MTIzNDU2"
   skip_final_snapshot = true
   multi_az            = false # Configure conforme necessário
-  role_arn            = "arn:aws:iam::730335333567:role/LabRole
+  role_arn            = "arn:aws:iam::730335333567:role/LabRole"
 
   vpc_security_group_ids = [aws_security_group.db_sg.id]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
