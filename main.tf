@@ -10,7 +10,6 @@ resource "aws_db_instance" "postgres_db" {
   engine_version      = "12"
   instance_class      = "db.t3.micro"
   identifier          = "db-fiap-burger-svc"
-  db_name             = "db-fiap-burger-svc"
   username            = "cG9zdGdyZXM="
   password            = "MTIzNDU2"
   skip_final_snapshot = true
