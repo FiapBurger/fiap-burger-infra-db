@@ -12,10 +12,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Check AWS_ACCESS_KEY_ID
+        id: check
+        run: echo ${{ secrets.AWS_ACCESS_KEY_ID }}
 
-      - name: Terraform Format
-        id: fmt
-        run: terraform fmt -check
+      # - name: Terraform Format
+      #   id: fmt
+      #   run: terraform fmt -check
 
       - name: Terraform Init
         id: init

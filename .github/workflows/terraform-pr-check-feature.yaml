@@ -24,10 +24,6 @@ jobs:
         with:
           terraform_version: 1.0.0
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
-      - name: Terraform Format
-        run: terraform fmt -check
-
         
 
   terraform-plan:

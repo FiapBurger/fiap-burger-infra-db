@@ -1,11 +1,5 @@
 provider "aws" {
-  region = var.aws_region
-
-  assume_role {
-    role_arn     = "arn:aws:iam::730335333567:role/LabRole"
-    session_name = "TerraformSession"
-  }
-
+  region = "us-east-1"
 }
 
 # AWS RDS instance
