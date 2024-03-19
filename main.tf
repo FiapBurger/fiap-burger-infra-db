@@ -29,13 +29,13 @@ resource "aws_db_instance" "postgres_db" {
 resource "aws_security_group" "db_sg" {
   name        = "db-fiap-burger-sg"
   description = "Security group for FiapBurger PostgreSQL DB"
-  vpc_id      = #acn, aqui precisa pegar na aws
+  vpc_id      = "vpc-0c9c3eae30dce3c6e"
 
   ingress {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = #acn, aqui precisa pegar na aws
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
