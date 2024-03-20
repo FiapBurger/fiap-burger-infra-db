@@ -6,7 +6,7 @@ Este projeto provisiona uma infraestrutura de banco de dados AWS RDS usando Terr
 
 - Terraform v0.14 ou superior
 - Conta AWS
-- AWS CLI configurado localmente
+- AWS CLI configurado localmente.
 
 ## Configuração Inicial
 
