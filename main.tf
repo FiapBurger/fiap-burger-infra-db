@@ -28,7 +28,7 @@ resource "aws_db_instance" "postgres_db" {
 resource "aws_security_group" "db_sg" {
   name        = "db-fiap-burger-sg"
   description = "Security group for FiapBurger PostgreSQL DB"
-  vpc_id      = "vpc-0c9c3eae30dce3c6e"
+  vpc_id      = "vpc-05ddaee086b5d576d"
 
 
   ingress {
@@ -50,8 +50,8 @@ resource "aws_security_group" "db_sg" {
 resource "aws_db_subnet_group" "db_subnet_group" {
   name       = "fiap-burger-db-subnet-group"
   subnet_ids = [
-          "subnet-081d1613d89ee8ba6",
-          "subnet-0b97e6916779e8ddb"
+          "subnet-07f986342f147ba3f",
+          "subnet-031faa0cc7884c140"
   ]
 
   tags = {
